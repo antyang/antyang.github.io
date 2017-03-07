@@ -1,4 +1,92 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>random ramble</title><description>thoughts on javascript and random things</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 07 Mar 2017 08:53:31 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Welcome to Ghost</title><description>&lt;p&gt;You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &lt;code&gt;&amp;lt;your blog URL&amp;gt;/ghost/&lt;/code&gt;. When you arrive, you can select this post from a list&lt;/p&gt;</description><link>http://localhost:2368/welcome-to-ghost/</link><guid isPermaLink="false">d313b16d-1af7-4560-b803-956ff8d3fb88</guid><category>Getting Started</category><dc:creator>antony</dc:creator><pubDate>Tue, 07 Mar 2017 06:21:04 GMT</pubDate><content:encoded>&lt;p&gt;You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &lt;code&gt;&amp;lt;your blog URL&amp;gt;/ghost/&lt;/code&gt;. When you arrive, you can select this post from a list on the left and see a preview of it on the right. Click the little pencil icon at the top of the preview to edit this post and read the next section!&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>random ramble</title><description>thoughts on javascript and random things</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 07 Mar 2017 08:55:02 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Setting up Ghost with Github pages</title><description>&lt;p&gt;&lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt; is a &lt;em&gt;blogging platform&lt;/em&gt; that's known for being user friendly and beautiful straight out of the box. &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; is a static site host on Github for hosting simple blogs and landing pages for open-source projects.&lt;/p&gt;
+
+&lt;h3 id="startingout"&gt;Starting out&lt;/h3&gt;
+
+&lt;p&gt;Create a folder to hold Ghost and static files.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/setting-up-ghost-with-github-pages/</link><guid isPermaLink="false">d1dd112d-ea46-4089-a28f-f9f2ed4540d7</guid><dc:creator>antony</dc:creator><pubDate>Tue, 07 Mar 2017 08:54:54 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt; is a &lt;em&gt;blogging platform&lt;/em&gt; that's known for being user friendly and beautiful straight out of the box. &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; is a static site host on Github for hosting simple blogs and landing pages for open-source projects.&lt;/p&gt;
+
+&lt;h3 id="startingout"&gt;Starting out&lt;/h3&gt;
+
+&lt;p&gt;Create a folder to hold Ghost and static files.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;to_desired_location&amp;gt;
+$ mkdir &amp;lt;ghost_folder_name&amp;gt; &amp;amp;&amp;amp; cd &amp;lt;ghost_folder_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Make sure you have &lt;a href="https://nodejs.org/en/"&gt;Node&lt;/a&gt; and &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; (default on apple macs).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Installing &lt;a href="https://brew.sh/"&gt;homebrew&lt;/a&gt;&lt;/strong&gt; (OSX package manager).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Installing &lt;a href="http://www.gnu.org/software/wget/"&gt;wget&lt;/a&gt;&lt;/strong&gt;, a tool used to retrieve content from web servers. &lt;em&gt;With homebrew installed, we can run the following.&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ brew update
+$ brew install wget
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Installing &lt;a href="https://github.com/axitkhurana/buster"&gt;Buster&lt;/a&gt; and Pip&lt;/strong&gt;(python package manager).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# go to your ghost's directory
+$ cd &amp;lt;ghost_folder_name&amp;gt;
+
+# if you don't have pip
+$ sudo easy_install pip
+
+# install buster
+$ sudo pip install buster
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Installing Ghost and start your local Ghost server.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# gets the latest version of ghost
+$ wget https://ghost.org/zip/ghost-latest.zip
+
+# unzips ghost
+$ unzip ghost-latest.zip
+
+# installs dependencies
+$ npm install
+
+$ npm start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;npm start&lt;/code&gt; starts the Node.js server that will serve up the admin interface at &lt;code&gt;http://localhost:2368/ghost&lt;/code&gt;. Here is where you will create an account and manage all your contents and fancy settings.&lt;/p&gt;
+
+&lt;h3 id="comingtogether"&gt;Coming together&lt;/h3&gt;
+
+&lt;p&gt;On github create a new repo &lt;code&gt;[your-github-username].github.io&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;NOTE: the format must be &lt;code&gt;[your-github-username].github.io&lt;/code&gt;. Otherwise it will not work.&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# current terminal tab is running so...
+# (in a new tab) get back to the ghost folder
+$ cd &amp;lt;ghost_folder_name&amp;gt;
+
+$ buster setup --gh-repo=\
+"https://github.com/&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git"
+
+$ buster generate
+
+$ buster deploy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;buster generate&lt;/code&gt; will create all of the appropriate directories, HTML pages and links for your entire Ghost blog within that folder. &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;buster deploy&lt;/code&gt;, adds, commits and pushes the changes you generated up to your blog's repo.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;To exit&lt;/em&gt; hit &lt;code&gt;Ctrl-C&lt;/code&gt; in the tab running Ghost's server.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;recap&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ npm start
+$ buster generate
+$ buster deploy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;enjoy.&lt;/p&gt;</content:encoded></item><item><title>Welcome to Ghost</title><description>&lt;p&gt;You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &lt;code&gt;&amp;lt;your blog URL&amp;gt;/ghost/&lt;/code&gt;. When you arrive, you can select this post from a list&lt;/p&gt;</description><link>http://localhost:2368/welcome-to-ghost/</link><guid isPermaLink="false">d313b16d-1af7-4560-b803-956ff8d3fb88</guid><category>Getting Started</category><dc:creator>antony</dc:creator><pubDate>Tue, 07 Mar 2017 06:21:04 GMT</pubDate><content:encoded>&lt;p&gt;You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &lt;code&gt;&amp;lt;your blog URL&amp;gt;/ghost/&lt;/code&gt;. When you arrive, you can select this post from a list on the left and see a preview of it on the right. Click the little pencil icon at the top of the preview to edit this post and read the next section!&lt;/p&gt;
 
 &lt;h2 id="gettingstarted"&gt;Getting Started&lt;/h2&gt;
 
