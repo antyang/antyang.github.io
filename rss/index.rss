@@ -1,10 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>random ramble</title><description>thoughts on javascript and random things</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 07 Mar 2017 09:00:11 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Setting up Ghost with Github pages</title><description>&lt;p&gt;&lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt; is a &lt;em&gt;blogging platform&lt;/em&gt; that's known for being user friendly and beautiful straight out of the box. &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; is a static site host on Github for hosting simple blogs and landing pages for open-source projects.&lt;/p&gt;
-
-&lt;h3 id="startingout"&gt;Starting out&lt;/h3&gt;
-
-&lt;p&gt;Create a folder to hold Ghost and static files.  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/setting-up-ghost-with-github-pages/</link><guid isPermaLink="false">d1dd112d-ea46-4089-a28f-f9f2ed4540d7</guid><dc:creator>antony</dc:creator><pubDate>Tue, 07 Mar 2017 08:54:54 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt; is a &lt;em&gt;blogging platform&lt;/em&gt; that's known for being user friendly and beautiful straight out of the box. &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; is a static site host on Github for hosting simple blogs and landing pages for open-source projects.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>random ramble</title><description>thoughts on javascript and random things</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 07 Mar 2017 18:53:29 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Setting up Ghost with Github pages</title><description>Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.</description><link>http://localhost:2368/setting-up-ghost-with-github-pages/</link><guid isPermaLink="false">d1dd112d-ea46-4089-a28f-f9f2ed4540d7</guid><dc:creator>antony</dc:creator><pubDate>Tue, 07 Mar 2017 08:54:54 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt; is a &lt;em&gt;blogging platform&lt;/em&gt; that's known for being user friendly and beautifully designed straight out of the box. &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; is a static site host on Github for hosting simple blogs and landing pages for open-source projects.&lt;/p&gt;
 
 &lt;h3 id="startingout"&gt;Starting out&lt;/h3&gt;
 
@@ -16,30 +10,36 @@ $ mkdir &amp;lt;ghost_folder_name&amp;gt; &amp;amp;&amp;amp; cd &amp;lt;ghost_fo
 
 &lt;p&gt;Make sure you have &lt;a href="https://nodejs.org/en/"&gt;Node&lt;/a&gt; and &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; (default on apple macs).&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Installing &lt;a href="https://brew.sh/"&gt;homebrew&lt;/a&gt;&lt;/strong&gt; (OSX package manager).&lt;/p&gt;
+&lt;h4 id="installinghomebrew"&gt;Installing homebrew.&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="https://brew.sh/"&gt;homebrew&lt;/a&gt; (OSX package manager) allows you to install, remove and updated applications and packages.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;Installing &lt;a href="http://www.gnu.org/software/wget/"&gt;wget&lt;/a&gt;&lt;/strong&gt;, a tool used to retrieve content from web servers. &lt;em&gt;With homebrew installed, we can run the following.&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id="installingwget"&gt;Installing wget.&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href="http://www.gnu.org/software/wget/"&gt;wget&lt;/a&gt; is a tool used to retrieve content from web servers. &lt;em&gt;With homebrew installed, we can run the following.&lt;/em&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ brew update
 $ brew install wget
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;Installing &lt;a href="https://github.com/axitkhurana/buster"&gt;Buster&lt;/a&gt; and Pip&lt;/strong&gt;(python package manager).&lt;/p&gt;
+&lt;h4 id="installingbusterandpip"&gt;Installing Buster and Pip.&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;# go to your ghost's directory
+&lt;p&gt;&lt;a href="https://github.com/axitkhurana/buster"&gt;Buster&lt;/a&gt; allows you to export content into static pages. Here we'll install Buster with &lt;a href="https://en.wikipedia.org/wiki/Pip_(package_manager)"&gt;pip&lt;/a&gt; (python package manager)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# go to ghost's directory
 $ cd &amp;lt;ghost_folder_name&amp;gt;
 
-# if you don't have pip
+# if you don't have pip installed
 $ sudo easy_install pip
 
 # install buster
 $ sudo pip install buster
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;Installing Ghost and start your local Ghost server.&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id="installingghostandstartyourlocalghostserver"&gt;Installing Ghost and start your local Ghost server.&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;# gets the latest version of ghost
 $ wget https://ghost.org/zip/ghost-latest.zip
@@ -51,6 +51,8 @@ $ unzip ghost-latest.zip
 $ npm install
 
 $ npm start
+
+$ open http://localhost:2368/ghost
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;npm start&lt;/code&gt; starts the Node.js server that will serve up the admin interface at &lt;code&gt;http://localhost:2368/ghost&lt;/code&gt;. Here is where you will create an account and manage all your contents and fancy settings.&lt;/p&gt;
@@ -59,7 +61,7 @@ $ npm start
 
 &lt;p&gt;On github create a new repo &lt;code&gt;[your-github-username].github.io&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;NOTE: the format must be &lt;code&gt;[your-github-username].github.io&lt;/code&gt;. Otherwise it will not work.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;NOTE: must be specific &lt;a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/"&gt;format&lt;/a&gt;. Otherwise it will not work.&lt;/em&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;# current terminal tab is running so...
 # (in a new tab) get back to the ghost folder
@@ -79,9 +81,10 @@ $ buster deploy
 
 &lt;p&gt;&lt;em&gt;To exit&lt;/em&gt; hit &lt;code&gt;Ctrl-C&lt;/code&gt; in the tab running Ghost's server.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;recap&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id="recap"&gt;recap.&lt;/h5&gt;
 
-&lt;pre&gt;&lt;code&gt;$ npm start
+&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;ghost_folder_name&amp;gt;
+$ npm start
 $ buster generate
 $ buster deploy
 &lt;/code&gt;&lt;/pre&gt;

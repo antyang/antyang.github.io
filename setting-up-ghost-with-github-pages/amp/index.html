@@ -2,8 +2,8 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Setting up Ghost with Github pages</title>
-    <meta name="description" content="">
+    <title>Ghost on Github Pages</title>
+    <meta name="description" content="Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.">
 
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -15,14 +15,14 @@
     
     <meta property="og:site_name" content="random ramble">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Setting up Ghost with Github pages">
-    <meta property="og:description" content="Ghost is a blogging platform that's known for being user friendly and beautiful straight out of the box. Github Pages is a static site host on Github for hosting simple blogs and landing pages for open-source projects. Starting out Create a folder to hold Ghost and static files.   $ cd &amp;lt;">
+    <meta property="og:title" content="Ghost on Github Pages">
+    <meta property="og:description" content="Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.">
     <meta property="og:url" content="http://localhost:2368/setting-up-ghost-with-github-pages/">
     <meta property="article:published_time" content="2017-03-07T08:54:54.000Z">
-    <meta property="article:modified_time" content="2017-03-07T08:54:56.000Z">
+    <meta property="article:modified_time" content="2017-03-07T18:53:21.000Z">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Setting up Ghost with Github pages">
-    <meta name="twitter:description" content="Ghost is a blogging platform that's known for being user friendly and beautiful straight out of the box. Github Pages is a static site host on Github for hosting simple blogs and landing pages for open-source projects. Starting out Create a folder to hold Ghost and static files.   $ cd &amp;lt;">
+    <meta name="twitter:title" content="Ghost on Github Pages">
+    <meta name="twitter:description" content="Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.">
     <meta name="twitter:url" content="http://localhost:2368/setting-up-ghost-with-github-pages/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="antony">
@@ -42,11 +42,11 @@
         "url": "http://localhost:2368/author/antyang/",
         "sameAs": []
     },
-    "headline": "Setting up Ghost with Github pages",
+    "headline": "Ghost on Github Pages",
     "url": "http://localhost:2368/setting-up-ghost-with-github-pages/",
     "datePublished": "2017-03-07T08:54:54.000Z",
-    "dateModified": "2017-03-07T08:54:56.000Z",
-    "description": "Ghost is a blogging platform that&#x27;s known for being user friendly and beautiful straight out of the box. Github Pages is a static site host on Github for hosting simple blogs and landing pages for open-source projects. Starting out Create a folder to hold Ghost and static files.   $ cd &amp;lt;",
+    "dateModified": "2017-03-07T18:53:21.000Z",
+    "description": "Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -847,7 +847,7 @@
             </header>
             <section class="post-content">
 
-                <p><a href="https://ghost.org/">Ghost</a> is a <em>blogging platform</em> that's known for being user friendly and beautiful straight out of the box. <a href="https://pages.github.com/">Github Pages</a> is a static site host on Github for hosting simple blogs and landing pages for open-source projects.</p>
+                <p><a href="https://ghost.org/">Ghost</a> is a <em>blogging platform</em> that's known for being user friendly and beautifully designed straight out of the box. <a href="https://pages.github.com/">Github Pages</a> is a static site host on Github for hosting simple blogs and landing pages for open-source projects.</p>
 
 <h3 id="startingout">Starting out</h3>
 
@@ -859,30 +859,36 @@ $ mkdir &lt;ghost_folder_name&gt; &amp;&amp; cd &lt;ghost_folder_name&gt;
 
 <p>Make sure you have <a href="https://nodejs.org/en/">Node</a> and <a href="https://www.python.org/">Python</a> (default on apple macs).</p>
 
-<p><strong>Installing <a href="https://brew.sh/">homebrew</a></strong> (OSX package manager).</p>
+<h4 id="installinghomebrew">Installing homebrew.</h4>
+
+<p><a href="https://brew.sh/">homebrew</a> (OSX package manager) allows you to install, remove and updated applications and packages.</p>
 
 <pre><code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 </code></pre>
 
-<p><strong>Installing <a href="http://www.gnu.org/software/wget/">wget</a></strong>, a tool used to retrieve content from web servers. <em>With homebrew installed, we can run the following.</em></p>
+<h4 id="installingwget">Installing wget.</h4>
+
+<p><a href="http://www.gnu.org/software/wget/">wget</a> is a tool used to retrieve content from web servers. <em>With homebrew installed, we can run the following.</em></p>
 
 <pre><code>$ brew update
 $ brew install wget
 </code></pre>
 
-<p><strong>Installing <a href="https://github.com/axitkhurana/buster">Buster</a> and Pip</strong>(python package manager).</p>
+<h4 id="installingbusterandpip">Installing Buster and Pip.</h4>
 
-<pre><code># go to your ghost's directory
+<p><a href="https://github.com/axitkhurana/buster">Buster</a> allows you to export content into static pages. Here we'll install Buster with <a href="https://en.wikipedia.org/wiki/Pip_(package_manager)">pip</a> (python package manager)</p>
+
+<pre><code># go to ghost's directory
 $ cd &lt;ghost_folder_name&gt;
 
-# if you don't have pip
+# if you don't have pip installed
 $ sudo easy_install pip
 
 # install buster
 $ sudo pip install buster
 </code></pre>
 
-<p><strong>Installing Ghost and start your local Ghost server.</strong></p>
+<h4 id="installingghostandstartyourlocalghostserver">Installing Ghost and start your local Ghost server.</h4>
 
 <pre><code># gets the latest version of ghost
 $ wget https://ghost.org/zip/ghost-latest.zip
@@ -894,6 +900,8 @@ $ unzip ghost-latest.zip
 $ npm install
 
 $ npm start
+
+$ open http://localhost:2368/ghost
 </code></pre>
 
 <p><code>npm start</code> starts the Node.js server that will serve up the admin interface at <code>http://localhost:2368/ghost</code>. Here is where you will create an account and manage all your contents and fancy settings.</p>
@@ -902,7 +910,7 @@ $ npm start
 
 <p>On github create a new repo <code>[your-github-username].github.io</code>.</p>
 
-<p><em>NOTE: the format must be <code>[your-github-username].github.io</code>. Otherwise it will not work.</em></p>
+<p><em>NOTE: must be specific <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">format</a>. Otherwise it will not work.</em></p>
 
 <pre><code># current terminal tab is running so...
 # (in a new tab) get back to the ghost folder
@@ -922,9 +930,10 @@ $ buster deploy
 
 <p><em>To exit</em> hit <code>Ctrl-C</code> in the tab running Ghost's server.</p>
 
-<p><strong>recap</strong></p>
+<h5 id="recap">recap.</h5>
 
-<pre><code>$ npm start
+<pre><code>$ cd &lt;ghost_folder_name&gt;
+$ npm start
 $ buster generate
 $ buster deploy
 </code></pre>
