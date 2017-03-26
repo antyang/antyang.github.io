@@ -1,4 +1,123 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>random ramble</title><description>thoughts on javascript and random things</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Sat, 11 Mar 2017 19:01:26 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Setting up Ghost with Github pages</title><description>Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.</description><link>http://localhost:2368/setting-up-ghost-with-github-pages/</link><guid isPermaLink="false">d1dd112d-ea46-4089-a28f-f9f2ed4540d7</guid><dc:creator>antony</dc:creator><pubDate>Tue, 07 Mar 2017 08:54:54 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt; is a &lt;em&gt;blogging platform&lt;/em&gt; that's known for being user friendly and beautifully designed straight out of the box. &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; is a static site host on Github for hosting simple blogs and landing pages for open-source projects.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>random ramble</title><description>thoughts on javascript and random things</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Sun, 26 Mar 2017 19:33:06 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Mac Setup for Development</title><description>Simple and easy macOS setup with Homebrew, GitHub, and Bash</description><link>http://localhost:2368/simple-mac-setup-for-development/</link><guid isPermaLink="false">4e8a0e3d-b9e3-4ad5-a5a7-83eed8433eff</guid><dc:creator>antony</dc:creator><pubDate>Sun, 26 Mar 2017 19:08:00 GMT</pubDate><content:encoded>&lt;hr&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/simple-mac-setup-for-development/#homebrew"&gt;Homebrew&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/simple-mac-setup-for-development/#github"&gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/simple-mac-setup-for-development/#bash"&gt;Bash&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id="homebrew"&gt;Homebrew&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id="brewfile"&gt;Brewfile&lt;/h2&gt;
+
+&lt;p&gt;Create this file in your home directory. &lt;br&gt;
+&lt;em&gt;Opening terminal by default, should be the home directory, if not, typing &lt;code&gt;cd&lt;/code&gt; in terminal will bring you there (&lt;code&gt;/Users/you&lt;/code&gt;).&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Create the file: &lt;br&gt;
+&lt;code&gt;touch Brewfile&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To edit the file: &lt;br&gt;
+&lt;code&gt;nano Brewfile&lt;/code&gt; 
+Be sure to save before exiting, following the prompts below in nano.&lt;/p&gt;
+
+&lt;p&gt;This is what I have in mine:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tap 'caskroom/cask'
+
+brew 'git'  
+brew 'node'  
+brew 'npm'  
+brew 'wifi-password'  
+brew 'youtube-dl'
+
+cask 'google-chrome'  
+cask 'firefox'  
+cask 'dropbox'  
+cask 'slack'  
+cask 'skype'  
+cask 'atom'  
+cask 'sublime-text'  
+cask 'postman'  
+cask 'keepingyouawake'  
+cask 'the-unarchiver'  
+cask 'appcleaner'  
+cask 'spectacle'  
+cask 'quicksilver'  
+cask 'flux'
+
+cask 'qlcolorcode'  
+cask 'qlstephen'  
+cask 'qlmarkdown'  
+cask 'quicklook-json'  
+cask 'qlprettypatch'  
+cask 'quicklook-csv'  
+cask 'betterzipql'  
+cask 'webpquicklook'
+
+cask 'vlc'  
+cask 'spotify'  
+cask 'transmission'  
+cask 'jadengeller-helium'  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can add/remove to your liking. &lt;br&gt;
+For more recipes check out: &lt;a href="https://caskroom.github.io/search"&gt;Cask Search&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you’re done, simply run this command to install the bundle: &lt;br&gt;
+&lt;code&gt;brew bundle install&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id="github"&gt;GitHub&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup"&gt;Git - First-Time Git Setup&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s setup &lt;code&gt;~/.gitconfig&lt;/code&gt; file &lt;br&gt;
+&lt;code&gt;touch .gitconfig&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we’ll input name, email, GitHub username, aliases to be able to type less and do more, and connect Git to the OS X Keychain so we won’t have to type username and password every time we push to GitHub.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[user]
+    name = First Last
+    email = email@email.com
+[github]
+    user = username
+[alias]
+    a = add
+    cm = commit
+    s = status
+    d = diff
+    l = log
+    br = branch
+    co = checkout
+    pom = push origin master
+[credential]
+    helper = osxkeychain
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For example, we’ll be able to run &lt;code&gt;git cm&lt;/code&gt; instead of &lt;code&gt;git commit&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id="bash"&gt;Bash&lt;/h2&gt;
+
+&lt;p&gt;Let’s create a &lt;code&gt;.bash_profile&lt;/code&gt; dotfile in your home folder.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;touch .bash_profile&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now create a bash alias to combine all commands and keep Homebrew up to date.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Run: &lt;br&gt;
+&lt;code&gt;source ~/.bash_profile&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then: &lt;br&gt;
+&lt;code&gt;brewup&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Run &lt;code&gt;brewup&lt;/code&gt; often to update, upgrade, prune, cleanup and doctor Homebrew.&lt;/p&gt;</content:encoded></item><item><title>Setting up Ghost with Github pages</title><description>Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.</description><link>http://localhost:2368/setting-up-ghost-with-github-pages/</link><guid isPermaLink="false">d1dd112d-ea46-4089-a28f-f9f2ed4540d7</guid><dc:creator>antony</dc:creator><pubDate>Tue, 07 Mar 2017 08:54:54 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt; is a &lt;em&gt;blogging platform&lt;/em&gt; that's known for being user friendly and beautifully designed straight out of the box. &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; is a static site host on Github for hosting simple blogs and landing pages for open-source projects.&lt;/p&gt;
 
 &lt;h3 id="startingout"&gt;Starting out&lt;/h3&gt;
 
