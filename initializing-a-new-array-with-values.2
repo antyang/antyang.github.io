@@ -1,29 +1,30 @@
-
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Initializing a new Array with values using Javascript</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="shortcut icon" href="../favicon.ico">
-  <link rel="stylesheet" type="text/css" href="../assets/css/default.css?v=dacb18fc8a">
-  <link rel="stylesheet" type="text/css" href="../assets/css/prism.css?v=dacb18fc8a">
-  <link rel="canonical" href="../initializing-a-new-array-with-values.2">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <link rel="amphtml" href="amp/index.html">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="assets/css/default.css?v=dacb18fc8a">
+  <link rel="stylesheet" type="text/css" href="assets/css/prism.css?v=dacb18fc8a">
+  <link rel="canonical" href="initializing-a-new-array-with-values.2" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="initializing-a-new-array-with-values/amp/index.html" />
     
-    <meta property="og:site_name" content="random ramble">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Initializing a new Array with values using Javascript">
-    <meta property="og:description" content="This is one of many ways to initialize a new array, specifically using  new Array(n). Say we want to initialize a new Array with a short length of 3. We can do:   var shortArr = [null, null, null];   Then iterate over the array and fill it.   shortArr = arr.map(function(">
-    <meta property="og:url" content="http://localhost:2368/initializing-a-new-array-with-values/">
-    <meta property="article:published_time" content="2017-04-01T01:43:15.000Z">
-    <meta property="article:modified_time" content="2017-04-03T21:22:08.000Z">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Initializing a new Array with values using Javascript">
-    <meta name="twitter:description" content="This is one of many ways to initialize a new array, specifically using  new Array(n). Say we want to initialize a new Array with a short length of 3. We can do:   var shortArr = [null, null, null];   Then iterate over the array and fill it.   shortArr = arr.map(function(">
-    <meta name="twitter:url" content="http://localhost:2368/initializing-a-new-array-with-values/">
-    <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="antony">
+    <meta property="og:site_name" content="random ramble" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Initializing a new Array with values using Javascript" />
+    <meta property="og:description" content="This is one of many ways to initialize a new array, specifically using  new Array(n). Say we want to initialize a new Array with a short length of 3. We can do:   var shortArr &#x3D; [null, null, null];   Then iterate over the array and fill it.   shortArr &#x3D; arr.map(function(" />
+    <meta property="og:url" content="http://localhost:2368/initializing-a-new-array-with-values/" />
+    <meta property="article:published_time" content="2017-04-01T01:43:15.000Z" />
+    <meta property="article:modified_time" content="2017-04-03T21:22:08.000Z" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Initializing a new Array with values using Javascript" />
+    <meta name="twitter:description" content="This is one of many ways to initialize a new array, specifically using  new Array(n). Say we want to initialize a new Array with a short length of 3. We can do:   var shortArr &#x3D; [null, null, null];   Then iterate over the array and fill it.   shortArr &#x3D; arr.map(function(" />
+    <meta name="twitter:url" content="http://localhost:2368/initializing-a-new-array-with-values/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="antony" />
     
     <script type="application/ld+json">
 {
@@ -52,8 +53,8 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.11">
-    <link rel="alternate" type="application/rss+xml" title="random ramble" href="../rss/index.html">
+    <meta name="generator" content="Ghost 0.11" />
+    <link rel="alternate" type="application/rss+xml" title="random ramble" href="rss/index.html" />
 </head>
 <body class="post-template">
 <div class="indexBox" id="indexBox">
@@ -70,7 +71,7 @@
   <ul>
     <li class="navTitle" id="catalog">_</li>
     <li class="navItem">
-      <a href="../author/antyang.2" class="nav">me</a>
+      <a href="author/antyang.2" class="nav">me</a>
     </li>
   </ul>
 </div>
@@ -100,12 +101,12 @@
 
 <p><strong>Now what if we want to initialize a longer array, say 13 or greater?</strong></p>
 
-<p>We can do the same… <br>
+<p>We can do the same… <br />
 <code>var longArr = [null, null, null, null, null, null, null, null, null, null, null, null, null];</code>
-<br> <br>
-No - <span class="invisible">Don't be silly.</span> <br>
-<br> <br>
-One way to do this is to create a new empty array with: <br>
+<br> <br />
+No - <span class="invisible">Don't be silly.</span> <br />
+<br> <br />
+One way to do this is to create a new empty array with: <br />
 <code>new Array(arrayLength)</code> and iterate with <code>map()</code> resulting in a new array.
 <em>caveat - map() ignores and preserve "holes" resulting in an empty array with "holes".</em></p>
 
@@ -124,25 +125,25 @@ longArr.map(function(el, i) {
 })
 // =&gt; [0, 1, 2, 3, 4, 5, ...]
 </code></pre>
-        <p>👍</p>
+        <p>👍</p/>
       </section>
 
 
       <div class="otherPost">
           <div class="prevPost">
-            <a href="../solving-sum-of-primes/">
+            <a href="solving-sum-of-primes/index.html">
               <h5><span>Prev: </span>Solving Sum of Primes</h5>
             </a>
           </div>
 
         <div class="home">
-          <a href="../">
+          <a href="index.html">
             <h5><span>Home</span></h5>
           </a>
         </div>
 
           <div class="nextPost">
-            <a href="../simple-mac-setup-for-development/">
+            <a href="simple-mac-setup-for-development/index.html">
               <h5><span>Next: </span>Setting up new Mac for Development</h5>
             </a>
           </div>
@@ -185,7 +186,7 @@ var personalBooks = [
   {
     name: 'Qora',
     image: 'http://placehold.it/250x350',
-    media: '<a href="../index.html" target=_blank>Code</a> ',
+    media: '<a href="index.html" target=_blank>Code</a> ',
     comment: 'Platform to obtain and share knowledge. Inspired by popular question & answer based web application (Quora)',
   },
   {
@@ -196,7 +197,8 @@ var personalBooks = [
   },
 ]
 </script>
-<script type="text/javascript" src="../assets/js/prism.js?v=dacb18fc8a"></script>
-<script type="text/javascript" src="../assets/js/default.js?v=dacb18fc8a"></script>
+<script type="text/javascript" src="assets/js/prism.js?v=dacb18fc8a"></script>
+<script type="text/javascript" src="assets/js/default.js?v=dacb18fc8a"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </body>
+</html>
