@@ -6,11 +6,11 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="shortcut icon" href="../favicon.ico">
-  <link rel="stylesheet" type="text/css" href="../assets/css/default.css?v=4171041d15">
-  <link rel="stylesheet" type="text/css" href="../assets/css/prism.css?v=4171041d15">
-  <link rel="canonical" href="antyang.7" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/default.css?v=e9cd64b806">
+  <link rel="stylesheet" type="text/css" href="../assets/css/prism.css?v=e9cd64b806">
+  <link rel="canonical" href="antyang" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <link rel="next" href="antyang/page/2/index.html" />
+    <link rel="next" href="http://localhost:2368/author/antyang/page/2/" />
     
     <meta property="og:site_name" content="random ramble" />
     <meta property="og:type" content="profile" />
@@ -40,18 +40,13 @@
 </head>
 <body class="author-template author-antyang">
 <div class="indexBox" id="indexBox">
-  <div class="briefBox">
-  <a href="antyang.7">
-    <h3 class="blogTitle">random ramble</h3>
-    <h5 class="blogDescription">thoughts on javascript and random things</h5>
-  </a>
-</div>
+
   <div class="mobileOnly">
     <div class="navBox">
   <ul>
     <li class="navTitle" id="catalog">_</li>
     <li class="navItem">
-      <a href="http://antyang.github.io/author/antyang/" class="nav">me</a>
+      <a href="antyang" class="nav">about</a>
     </li>
   </ul>
 </div>
@@ -60,10 +55,10 @@
   <div class="UA">
     <div class="UABox">
       <p class="userAgent">You are currently browsing on「 </p>
-      <img src="antyang.7" id="OSImg" class="userAgent">
+      <img src="antyang" id="OSImg" class="userAgent">
       <h4 id="OSBox" class="userAgent"></h4>
       <p class="userAgent">&nbsp;-&nbsp;</p>
-      <img src="antyang.7" id="BSImg" class="userAgent">
+      <img src="antyang" id="BSImg" class="userAgent">
       <h4 id="BSBox" class="userAgent"></h4>
       <p class="userAgent">」</p>
       <p class="userAgent">at「</p>
@@ -85,6 +80,8 @@
       <div id="bookBox" class="personalBox bookBox"></div>
     </div>
 </div>
+
+
 <canvas id="cas" class="cas"></canvas>
 <script type="text/javascript" src="https://pv.sohu.com/cityjson"></script>
 
@@ -129,8 +126,8 @@ var personalBooks = [
   },
 ]
 </script>
-<script type="text/javascript" src="../assets/js/prism.js?v=4171041d15"></script>
-<script type="text/javascript" src="../assets/js/default.js?v=4171041d15"></script>
+<script type="text/javascript" src="../assets/js/prism.js?v=e9cd64b806"></script>
+<script type="text/javascript" src="../assets/js/default.js?v=e9cd64b806"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </body>
 </html>
