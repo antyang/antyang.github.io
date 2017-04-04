@@ -1,4 +1,169 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>random ramble</title><description>thoughts on javascript and random things</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Sun, 26 Mar 2017 19:45:25 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Setting up new Mac for Development</title><description>Quick and simple macOS setup with Homebrew, GitHub, and Bash</description><link>http://localhost:2368/simple-mac-setup-for-development/</link><guid isPermaLink="false">4e8a0e3d-b9e3-4ad5-a5a7-83eed8433eff</guid><dc:creator>antony</dc:creator><pubDate>Sun, 26 Mar 2017 19:08:00 GMT</pubDate><content:encoded>&lt;p&gt;Upon getting a new MacBook Pro, I decided to research the most efficient way to set up a clean development environment. Here's the initial setup to hit the ground running.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>random ramble</title><description>thoughts on javascript and random things</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 04 Apr 2017 21:34:14 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Solving Sum of Primes</title><description>&lt;p&gt;The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this. &lt;br&gt;
+&lt;br&gt; &lt;br&gt;
+&lt;strong&gt;An imperative approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;function isPrime(n) {  
+  for(var j = 2; j &amp;lt; n; j++) {
+    if(n % j === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function sumPrimes(&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/solving-sum-of-primes/</link><guid isPermaLink="false">7944b330-389a-427f-bce9-a61966defa04</guid><dc:creator>antony</dc:creator><pubDate>Sat, 01 Apr 2017 01:56:00 GMT</pubDate><content:encoded>&lt;p&gt;The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this. &lt;br&gt;
+&lt;br&gt; &lt;br&gt;
+&lt;strong&gt;An imperative approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;function isPrime(n) {  
+  for(var j = 2; j &amp;lt; n; j++) {
+    if(n % j === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function sumPrimes(num) {  
+  var sum = 0;
+  for(var i = 2; i &amp;lt;= num; i++) {
+    if(isPrime(i)) {
+      sum += i;
+    }
+  }
+  return sum;
+}
+
+sumPrimes(100);  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This code has 2 functions, first function &lt;code&gt;isPrime&lt;/code&gt; is iterating from 2 to the Nth number and checking every number to see if it's a prime, returning a Boolean. Second function &lt;code&gt;sumPrimes&lt;/code&gt; is again iterating 2 through the Nth then using &lt;code&gt;isPrime()&lt;/code&gt; to check if each index passes the prime test, resulting in a nested for-loop, then returning the sum of primes that were true. Let's see if we can do better.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A semi-declarative approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;function sumPrimes(num) {  
+  var numbers = Array.apply(null, Array(num))
+  .map((n, i) =&amp;gt; i+1).slice(1);
+
+  return numbers.filter(function(number, index, array) {
+    for (var j = 0; j &amp;lt; index; j++) {
+      if (number % array[j] === 0) {
+        return false;
+      }
+    }
+    return true;
+  }).reduce(function(sum, el) {
+    return sum += el;
+  });
+}
+
+sumPrimes(100);  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this function we assign numbers to an empty array using &lt;code&gt;Array.apply(null, Array(#))&lt;/code&gt;to avoid any "holes". &lt;em&gt;You can read about it in the &lt;a href="http://localhost:2368/initializing-a-new-array-with-values"&gt;previous&lt;/a&gt; post.&lt;/em&gt; Then we iterate through the new array and fill it with the &lt;code&gt;index + 1&lt;/code&gt; resulting in &lt;code&gt;[1,2,3..10]&lt;/code&gt; and slicing off the first index giving us &lt;code&gt;[2,3,4..10]&lt;/code&gt;. Now we can filter though this list of numbers seeing if it passes the test and summing it up with &lt;code&gt;reduce&lt;/code&gt;. &lt;br&gt;
+This code is essentially the same thing but with the use of higher-order functions. We're still iterating through each number to check for primes. Let's try another approach.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sieve of Eratosthenes approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Sieve of Eratosthenes is an Ancient Greek method of finding prime numbers in an array or the hundreds chart. &lt;a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes" target="_blank"&gt;[wiki]&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id="gist"&gt;gist&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The list will start at 2 to N.&lt;/li&gt;
+&lt;li&gt;We start by marking out the number 1 as it can’t be prime, by definition.&lt;/li&gt;
+&lt;li&gt;Then we look through the list, looking for the next un-marked number and we find 2. We consider 2 to be prime because it’s not marked. Now we go though the list marking out all the multiples of 2 that are larger than 2.&lt;/li&gt;
+&lt;li&gt;Now we move to our next unmarked number, 3, and mark all the numbers that are multiples of 3.&lt;/li&gt;
+&lt;li&gt;We continue with this pattern, to discover primes and mark out their multiples until the list is complete.&lt;/li&gt;
+&lt;li&gt;When finished, all unmarked numbers in the list will be the prime numbers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;var sieveOfEratSum = function(n) {  
+  var sieve = Array.apply(null, Array(n)).fill(true);
+  var upperlimit = Math.ceil(Math.sqrt(n));
+  var prime = [];
+
+  for(var i = 2; i &amp;lt;= limit; i++) {
+    if(sieve[i]) {
+      for(var j = i*i; j &amp;lt;= n; j += i) {
+        sieve[j] = false;
+      }
+    }
+  }
+
+  for(var i = 2; i &amp;lt;= n; i++) {
+    if(sieve[i]) {
+      prime.push(i);
+    }
+  }
+  return prime.reduce(function(sum, el) {
+    return sum += el;
+  }, 0);
+}
+
+sieveOfEratSum(10);  
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Initializing a new Array with values</title><description>&lt;p&gt;&lt;em&gt;This is one of many ways to initialize a new array, specifically using  &lt;code&gt;new Array(n)&lt;/code&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Say we want to initialize a new Array with a short length of 3.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We can do:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;var shortArr = [null, null, null];  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then iterate over the array and fill it.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;shortArr = arr.map(function(&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/initializing-a-new-array-with-values/</link><guid isPermaLink="false">17229966-1597-4669-b6ba-9562fb962c6f</guid><dc:creator>antony</dc:creator><pubDate>Sat, 01 Apr 2017 01:43:15 GMT</pubDate><content:encoded>&lt;p&gt;&lt;em&gt;This is one of many ways to initialize a new array, specifically using  &lt;code&gt;new Array(n)&lt;/code&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Say we want to initialize a new Array with a short length of 3.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We can do:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;var shortArr = [null, null, null];  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then iterate over the array and fill it.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;shortArr = arr.map(function(el, i) {  
+    return i;
+}
+// =&amp;gt; [0, 1, 2]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Great!&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Now what if we want to initialize a longer array, say 13 or greater?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We can do the same… &lt;br&gt;
+&lt;code&gt;var longArr = [null, null, null, null, null, null, null, null, null, null, null, null, null];&lt;/code&gt;
+&lt;br&gt; &lt;br&gt;
+No - &lt;span class="invisible"&gt;Don't be silly.&lt;/span&gt; &lt;br&gt;
+&lt;br&gt; &lt;br&gt;
+One way to do this is to create a new empty array with: &lt;br&gt;
+&lt;code&gt;new Array(arrayLength)&lt;/code&gt; and iterate with &lt;code&gt;map()&lt;/code&gt; resulting in a new array.
+&lt;em&gt;caveat - map() ignores and preserve "holes" resulting in an empty array with "holes".&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;new Array(13).map(function(el, i) {  
+    return i;
+})
+// =&amp;gt; [ , , , ...];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A way to patch these missing elements is to use &lt;code&gt;Function.prototype.apply()&lt;/code&gt;which treats holes as if they were &lt;code&gt;undefined&lt;/code&gt; elements.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;var longArr = Array.apply(null, Array(13));  
+// =&amp;gt; [undefined, undefined, undefined...]
+longArr.map(function(el, i) {  
+    return i;
+})
+// =&amp;gt; [0, 1, 2, 3, 4, 5, ...]
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Setting up new Mac for Development</title><description>Quick and simple macOS setup with Homebrew, GitHub, and Bash</description><link>http://localhost:2368/simple-mac-setup-for-development/</link><guid isPermaLink="false">4e8a0e3d-b9e3-4ad5-a5a7-83eed8433eff</guid><dc:creator>antony</dc:creator><pubDate>Sun, 26 Mar 2017 19:08:00 GMT</pubDate><content:encoded>&lt;p&gt;Upon getting a new MacBook Pro, I decided to research the most efficient way to set up a clean development environment. Here's the initial setup to hit the ground running.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Note: macOS Sierra Version 10.12&lt;/em&gt;&lt;/p&gt;
 
@@ -14,23 +179,30 @@
 
 &lt;h2 id="homebrew"&gt;Homebrew&lt;/h2&gt;
 
-&lt;p&gt;&lt;code&gt;/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-js"&gt;/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id="brewfile"&gt;Brewfile&lt;/h2&gt;
 
 &lt;p&gt;Create this file in your home directory. &lt;br&gt;
 &lt;em&gt;Opening terminal by default, should be the home directory, if not, typing &lt;code&gt;cd&lt;/code&gt; in terminal will bring you there (&lt;code&gt;/Users/you&lt;/code&gt;).&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;Create the file: &lt;br&gt;
-&lt;code&gt;touch Brewfile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Create the file:  &lt;/p&gt;
 
-&lt;p&gt;To edit the file: &lt;br&gt;
-&lt;code&gt;nano Brewfile&lt;/code&gt; 
+&lt;pre&gt;&lt;code class="language-js"&gt;touch Brewfile  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To edit the file:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;nano Brewfile  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
 Be sure to save before exiting, following the prompts below in nano.&lt;/p&gt;
 
 &lt;p&gt;This is what I have in mine:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;tap 'caskroom/cask'
+&lt;pre&gt;&lt;code class="language-js"&gt;tap 'caskroom/cask'
 
 brew 'git'  
 brew 'node'  
@@ -71,21 +243,23 @@ cask 'jadengeller-helium'
 &lt;p&gt;You can add/remove to your liking. &lt;br&gt;
 For more recipes check out: &lt;a href="https://caskroom.github.io/search"&gt;Cask Search&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Once you’re done, simply run this command to install the bundle: &lt;br&gt;
-&lt;code&gt;brew bundle install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Once you’re done, simply run this command to install the bundle:  &lt;/p&gt;
 
-&lt;hr&gt;
+&lt;pre&gt;&lt;code class="language-js"&gt;brew bundle install  
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id="github"&gt;GitHub&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup"&gt;Git - First-Time Git Setup&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Let’s setup &lt;code&gt;~/.gitconfig&lt;/code&gt; file &lt;br&gt;
-&lt;code&gt;touch .gitconfig&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Let’s setup &lt;code&gt;~/.gitconfig&lt;/code&gt; file  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;touch .gitconfig  
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Here we’ll input name, email, GitHub username, aliases to be able to type less and do more, and connect Git to the OS X Keychain so we won’t have to type username and password every time we push to GitHub.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;[user]
+&lt;pre&gt;&lt;code class="language-js"&gt;[user]
     name = First Last
     email = email@email.com
 [github]
@@ -109,68 +283,74 @@ For more recipes check out: &lt;a href="https://caskroom.github.io/search"&gt;Ca
 
 &lt;p&gt;Let’s create a &lt;code&gt;.bash_profile&lt;/code&gt; dotfile in your home folder.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;touch .bash_profile&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-js"&gt;touch .bash_profile  
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Now create a bash alias to combine all commands and keep Homebrew up to date.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-js"&gt;alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'  
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Run: &lt;br&gt;
-&lt;code&gt;source ~/.bash_profile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Run:  &lt;/p&gt;
 
-&lt;p&gt;Then: &lt;br&gt;
-&lt;code&gt;brewup&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-js"&gt;source ~/.bash_profile  
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Run &lt;code&gt;brewup&lt;/code&gt; often to update, upgrade, prune, cleanup and doctor Homebrew.&lt;/p&gt;</content:encoded></item><item><title>Setting up Ghost with Github pages</title><description>Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.</description><link>http://localhost:2368/setting-up-ghost-with-github-pages/</link><guid isPermaLink="false">d1dd112d-ea46-4089-a28f-f9f2ed4540d7</guid><dc:creator>antony</dc:creator><pubDate>Tue, 07 Mar 2017 08:54:54 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt; is a &lt;em&gt;blogging platform&lt;/em&gt; that's known for being user friendly and beautifully designed straight out of the box. &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; is a static site host on Github for hosting simple blogs and landing pages for open-source projects.&lt;/p&gt;
+&lt;p&gt;Then:  &lt;/p&gt;
 
-&lt;h3 id="startingout"&gt;Starting out&lt;/h3&gt;
+&lt;pre&gt;&lt;code class="language-js"&gt;brewup  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Run &lt;code&gt;brewup&lt;/code&gt; often to update, upgrade, prune, cleanup and doctor Homebrew.&lt;/p&gt;</content:encoded></item><item><title>Setting up Ghost with Github pages</title><description>Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.</description><link>http://localhost:2368/setting-up-ghost-with-github-pages/</link><guid isPermaLink="false">d1dd112d-ea46-4089-a28f-f9f2ed4540d7</guid><dc:creator>antony</dc:creator><pubDate>Tue, 07 Mar 2017 08:54:54 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt; is a "blogging platform" that's known for being user friendly and beautifully designed straight out of the box. &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; is a static site host on Github for hosting simple blogs and landing pages for open-source projects.&lt;/p&gt;
+
+&lt;h2 id="startingout"&gt;Starting out&lt;/h2&gt;
 
 &lt;p&gt;Create a folder to hold Ghost and static files.  &lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;to_desired_location&amp;gt;
+&lt;pre&gt;&lt;code class="language-js"&gt;$ cd &amp;lt;to_desired_location&amp;gt;
 $ mkdir &amp;lt;ghost_folder_name&amp;gt; &amp;amp;&amp;amp; cd &amp;lt;ghost_folder_name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Make sure you have &lt;a href="https://nodejs.org/en/"&gt;Node&lt;/a&gt; and &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; (default on apple macs).&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;Make sure you have &lt;a href="https://nodejs.org/en/"&gt;Node&lt;/a&gt; and &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; (default on apple macs).&lt;/mark&gt;&lt;/p&gt;
 
-&lt;h4 id="installinghomebrew"&gt;Installing homebrew.&lt;/h4&gt;
+&lt;h2 id="installinghomebrew"&gt;Installing homebrew&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href="https://brew.sh/"&gt;homebrew&lt;/a&gt; (OSX package manager) allows you to install, remove and updated applications and packages.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+&lt;pre&gt;&lt;code class="language-js"&gt;/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id="installingwget"&gt;Installing wget.&lt;/h4&gt;
+&lt;h2 id="installingwget"&gt;Installing wget&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href="http://www.gnu.org/software/wget/"&gt;wget&lt;/a&gt; is a tool used to retrieve content from web servers. &lt;em&gt;With homebrew installed, we can run the following.&lt;/em&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ brew update
+&lt;pre&gt;&lt;code class="language-js"&gt;$ brew update
 $ brew install wget
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id="installingbusterandpip"&gt;Installing Buster and Pip.&lt;/h4&gt;
+&lt;h2 id="installingbusterandpip"&gt;Installing Buster and Pip&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href="https://github.com/axitkhurana/buster"&gt;Buster&lt;/a&gt; allows you to export content into static pages. Here we'll install Buster with &lt;a href="https://en.wikipedia.org/wiki/Pip_(package_manager)"&gt;pip&lt;/a&gt; (python package manager)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;# go to ghost's directory
+&lt;pre&gt;&lt;code class="language-js"&gt;// go to ghost's directory
 $ cd &amp;lt;ghost_folder_name&amp;gt;
 
-# if you don't have pip installed
+// if you don't have pip installed
 $ sudo easy_install pip
 
-# install buster
+// install buster
 $ sudo pip install buster
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id="installingghostandstartyourlocalghostserver"&gt;Installing Ghost and start your local Ghost server.&lt;/h4&gt;
+&lt;h2 id="installingghostandstartyourlocalghostserver"&gt;Installing Ghost and start your local Ghost server&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;# gets the latest version of ghost
+&lt;pre&gt;&lt;code class="language-js"&gt;// gets the latest version of ghost
 $ wget https://ghost.org/zip/ghost-latest.zip
 
-# unzips ghost
+// unzips ghost
 $ unzip ghost-latest.zip
 
-# installs dependencies
+// installs dependencies
 $ npm install
 
 $ npm start
@@ -180,14 +360,14 @@ $ open http://localhost:2368/ghost
 
 &lt;p&gt;&lt;code&gt;npm start&lt;/code&gt; starts the Node.js server that will serve up the admin interface at &lt;code&gt;http://localhost:2368/ghost&lt;/code&gt;. Here is where you will create an account and manage all your contents and fancy settings.&lt;/p&gt;
 
-&lt;h3 id="comingtogether"&gt;Coming together&lt;/h3&gt;
+&lt;h2 id="comingtogether"&gt;Coming together&lt;/h2&gt;
 
 &lt;p&gt;On github create a new repo &lt;code&gt;[your-github-username].github.io&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;NOTE: must be specific &lt;a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/"&gt;format&lt;/a&gt;. Otherwise it will not work.&lt;/em&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;# current terminal tab is running so...
-# (in a new tab) get back to the ghost folder
+&lt;pre&gt;&lt;code class="language-js"&gt;// current terminal tab is running so...
+// (in a new tab) get back to the ghost folder
 $ cd &amp;lt;ghost_folder_name&amp;gt;
 
 $ buster setup --gh-repo=\
@@ -204,9 +384,9 @@ $ buster deploy
 
 &lt;p&gt;&lt;em&gt;To exit&lt;/em&gt; hit &lt;code&gt;Ctrl-C&lt;/code&gt; in the tab running Ghost's server.&lt;/p&gt;
 
-&lt;h5 id="recap"&gt;recap.&lt;/h5&gt;
+&lt;h2 id="recap"&gt;recap&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;ghost_folder_name&amp;gt;
+&lt;pre&gt;&lt;code class="language-js"&gt;$ cd &amp;lt;ghost_folder_name&amp;gt;
 $ npm start
 $ buster generate
 $ buster deploy

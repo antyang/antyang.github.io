@@ -2,8 +2,8 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Ghost on Github Pages</title>
-    <meta name="description" content="Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.">
+    <title>Solving Sum of Primes - Sieve of Eratosthenes and Javascript</title>
+    <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -15,15 +15,15 @@
     
     <meta property="og:site_name" content="random ramble">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Ghost on Github Pages">
-    <meta property="og:description" content="Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.">
-    <meta property="og:url" content="http://localhost:2368/setting-up-ghost-with-github-pages/">
-    <meta property="article:published_time" content="2017-03-07T08:54:54.000Z">
-    <meta property="article:modified_time" content="2017-03-31T23:15:01.000Z">
+    <meta property="og:title" content="Solving Sum of Primes - Sieve of Eratosthenes and Javascript">
+    <meta property="og:description" content="The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this.    An imperative approach: function isPrime(n) {     for(var j = 2; j &amp;lt; n; j++) {     if(n % j === 0) {       return false;     }   }   return true; } function sumPrimes(">
+    <meta property="og:url" content="http://localhost:2368/solving-sum-of-primes/">
+    <meta property="article:published_time" content="2017-04-01T01:56:00.000Z">
+    <meta property="article:modified_time" content="2017-04-04T21:19:05.000Z">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Ghost on Github Pages">
-    <meta name="twitter:description" content="Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.">
-    <meta name="twitter:url" content="http://localhost:2368/setting-up-ghost-with-github-pages/">
+    <meta name="twitter:title" content="Solving Sum of Primes - Sieve of Eratosthenes and Javascript">
+    <meta name="twitter:description" content="The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this.    An imperative approach: function isPrime(n) {     for(var j = 2; j &amp;lt; n; j++) {     if(n % j === 0) {       return false;     }   }   return true; } function sumPrimes(">
+    <meta name="twitter:url" content="http://localhost:2368/solving-sum-of-primes/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="antony">
     
@@ -42,11 +42,11 @@
         "url": "http://localhost:2368/author/antyang/",
         "sameAs": []
     },
-    "headline": "Ghost on Github Pages",
-    "url": "http://localhost:2368/setting-up-ghost-with-github-pages/",
-    "datePublished": "2017-03-07T08:54:54.000Z",
-    "dateModified": "2017-03-31T23:15:01.000Z",
-    "description": "Quick steps to setup and start using Ghost blog platform with Github Pages in minutes.",
+    "headline": "Solving Sum of Primes - Sieve of Eratosthenes and Javascript",
+    "url": "http://localhost:2368/solving-sum-of-primes/",
+    "datePublished": "2017-04-01T01:56:00.000Z",
+    "dateModified": "2017-04-04T21:19:05.000Z",
+    "description": "The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this.    An imperative approach: function isPrime(n) {     for(var j &#x3D; 2; j &amp;lt; n; j++) {     if(n % j &#x3D;&#x3D;&#x3D; 0) {       return false;     }   }   return true; } function sumPrimes(",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -839,106 +839,110 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Setting up Ghost with Github pages</h1>
+                <h1 class="post-title">Solving Sum of Primes</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/antyang.1">antony</a></p>
-                    <time class="post-date" datetime="2017-03-07">2017-03-07</time>
+                    <time class="post-date" datetime="2017-03-31">2017-03-31</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p><a href="https://ghost.org/">Ghost</a> is a "blogging platform" that's known for being user friendly and beautifully designed straight out of the box. <a href="https://pages.github.com/">Github Pages</a> is a static site host on Github for hosting simple blogs and landing pages for open-source projects.</p>
+                <p>The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this. <br>
+<br> <br>
+<strong>An imperative approach:</strong></p>
 
-<h2 id="startingout">Starting out</h2>
+<pre><code class="language-js">function isPrime(n) {  
+  for(var j = 2; j &lt; n; j++) {
+    if(n % j === 0) {
+      return false;
+    }
+  }
+  return true;
+}
 
-<p>Create a folder to hold Ghost and static files.  </p>
+function sumPrimes(num) {  
+  var sum = 0;
+  for(var i = 2; i &lt;= num; i++) {
+    if(isPrime(i)) {
+      sum += i;
+    }
+  }
+  return sum;
+}
 
-<pre><code class="language-js">$ cd &lt;to_desired_location&gt;
-$ mkdir &lt;ghost_folder_name&gt; &amp;&amp; cd &lt;ghost_folder_name&gt;
+sumPrimes(100);  
 </code></pre>
 
-<p><mark>Make sure you have <a href="https://nodejs.org/en/">Node</a> and <a href="https://www.python.org/">Python</a> (default on apple macs).</mark></p>
+<p>This code has 2 functions, first function <code>isPrime</code> is iterating from 2 to the Nth number and checking every number to see if it's a prime, returning a Boolean. Second function <code>sumPrimes</code> is again iterating 2 through the Nth then using <code>isPrime()</code> to check if each index passes the prime test, resulting in a nested for-loop, then returning the sum of primes that were true. Let's see if we can do better.</p>
 
-<h2 id="installinghomebrew">Installing homebrew</h2>
+<p><br></p>
 
-<p><a href="https://brew.sh/">homebrew</a> (OSX package manager) allows you to install, remove and updated applications and packages.</p>
+<p><strong>A semi-declarative approach:</strong></p>
 
-<pre><code class="language-js">/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+<pre><code class="language-js">function sumPrimes(num) {  
+  var numbers = Array.apply(null, Array(num))
+  .map((n, i) =&gt; i+1).slice(1);
+
+  return numbers.filter(function(number, index, array) {
+    for (var j = 0; j &lt; index; j++) {
+      if (number % array[j] === 0) {
+        return false;
+      }
+    }
+    return true;
+  }).reduce(function(sum, el) {
+    return sum += el;
+  });
+}
+
+sumPrimes(100);  
 </code></pre>
 
-<h2 id="installingwget">Installing wget</h2>
+<p>In this function we assign numbers to an empty array using <code>Array.apply(null, Array(#))</code>to avoid any "holes". <em>You can read about it in the <a href="../../initializing-a-new-array-with-values.1">previous</a> post.</em> Then we iterate through the new array and fill it with the <code>index + 1</code> resulting in <code>[1,2,3..10]</code> and slicing off the first index giving us <code>[2,3,4..10]</code>. Now we can filter though this list of numbers seeing if it passes the test and summing it up with <code>reduce</code>. <br>
+This code is essentially the same thing but with the use of higher-order functions. We're still iterating through each number to check for primes. Let's try another approach.</p>
 
-<p><a href="http://www.gnu.org/software/wget/">wget</a> is a tool used to retrieve content from web servers. <em>With homebrew installed, we can run the following.</em></p>
+<p><br></p>
 
-<pre><code class="language-js">$ brew update
-$ brew install wget
+<p><strong>Sieve of Eratosthenes approach:</strong></p>
+
+<p><em>Sieve of Eratosthenes is an Ancient Greek method of finding prime numbers in an array or the hundreds chart. <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes" target="_blank">[wiki]</a></em></p>
+
+<h2 id="gist">gist</h2>
+
+<ul>
+<li>The list will start at 2 to N.</li>
+<li>We start by marking out the number 1 as it can’t be prime, by definition.</li>
+<li>Then we look through the list, looking for the next un-marked number and we find 2. We consider 2 to be prime because it’s not marked. Now we go though the list marking out all the multiples of 2 that are larger than 2.</li>
+<li>Now we move to our next unmarked number, 3, and mark all the numbers that are multiples of 3.</li>
+<li>We continue with this pattern, to discover primes and mark out their multiples until the list is complete.</li>
+<li>When finished, all unmarked numbers in the list will be the prime numbers.</li>
+</ul>
+
+<pre><code class="language-js">var sieveOfEratSum = function(n) {  
+  var sieve = Array.apply(null, Array(n)).fill(true);
+  var upperlimit = Math.ceil(Math.sqrt(n));
+  var prime = [];
+
+  for(var i = 2; i &lt;= limit; i++) {
+    if(sieve[i]) {
+      for(var j = i*i; j &lt;= n; j += i) {
+        sieve[j] = false;
+      }
+    }
+  }
+
+  for(var i = 2; i &lt;= n; i++) {
+    if(sieve[i]) {
+      prime.push(i);
+    }
+  }
+  return prime.reduce(function(sum, el) {
+    return sum += el;
+  }, 0);
+}
+
+sieveOfEratSum(10);  
 </code></pre>
-
-<h2 id="installingbusterandpip">Installing Buster and Pip</h2>
-
-<p><a href="https://github.com/axitkhurana/buster">Buster</a> allows you to export content into static pages. Here we'll install Buster with <a href="https://en.wikipedia.org/wiki/Pip_(package_manager)">pip</a> (python package manager)</p>
-
-<pre><code class="language-js">// go to ghost's directory
-$ cd &lt;ghost_folder_name&gt;
-
-// if you don't have pip installed
-$ sudo easy_install pip
-
-// install buster
-$ sudo pip install buster
-</code></pre>
-
-<h2 id="installingghostandstartyourlocalghostserver">Installing Ghost and start your local Ghost server</h2>
-
-<pre><code class="language-js">// gets the latest version of ghost
-$ wget https://ghost.org/zip/ghost-latest.zip
-
-// unzips ghost
-$ unzip ghost-latest.zip
-
-// installs dependencies
-$ npm install
-
-$ npm start
-
-$ open http://localhost:2368/ghost
-</code></pre>
-
-<p><code>npm start</code> starts the Node.js server that will serve up the admin interface at <code>http://localhost:2368/ghost</code>. Here is where you will create an account and manage all your contents and fancy settings.</p>
-
-<h2 id="comingtogether">Coming together</h2>
-
-<p>On github create a new repo <code>[your-github-username].github.io</code>.</p>
-
-<p><em>NOTE: must be specific <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">format</a>. Otherwise it will not work.</em></p>
-
-<pre><code class="language-js">// current terminal tab is running so...
-// (in a new tab) get back to the ghost folder
-$ cd &lt;ghost_folder_name&gt;
-
-$ buster setup --gh-repo=\
-"https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git"
-
-$ buster generate
-
-$ buster deploy
-</code></pre>
-
-<p><code>buster generate</code> will create all of the appropriate directories, HTML pages and links for your entire Ghost blog within that folder. </p>
-
-<p><code>buster deploy</code>, adds, commits and pushes the changes you generated up to your blog's repo.</p>
-
-<p><em>To exit</em> hit <code>Ctrl-C</code> in the tab running Ghost's server.</p>
-
-<h2 id="recap">recap</h2>
-
-<pre><code class="language-js">$ cd &lt;ghost_folder_name&gt;
-$ npm start
-$ buster generate
-$ buster deploy
-</code></pre>
-
-<p>enjoy.</p>
 
             </section>
 
