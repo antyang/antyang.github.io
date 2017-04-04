@@ -19,7 +19,7 @@
     <meta property="og:description" content="The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this.    An imperative approach: function isPrime(n) {     for(var j = 2; j &amp;lt; n; j++) {     if(n % j === 0) {       return false;     }   }   return true; } function sumPrimes(">
     <meta property="og:url" content="http://localhost:2368/solving-sum-of-primes/">
     <meta property="article:published_time" content="2017-04-01T01:56:00.000Z">
-    <meta property="article:modified_time" content="2017-04-04T21:19:05.000Z">
+    <meta property="article:modified_time" content="2017-04-04T21:42:32.000Z">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Solving Sum of Primes - Sieve of Eratosthenes and Javascript">
     <meta name="twitter:description" content="The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this.    An imperative approach: function isPrime(n) {     for(var j = 2; j &amp;lt; n; j++) {     if(n % j === 0) {       return false;     }   }   return true; } function sumPrimes(">
@@ -45,7 +45,7 @@
     "headline": "Solving Sum of Primes - Sieve of Eratosthenes and Javascript",
     "url": "http://localhost:2368/solving-sum-of-primes/",
     "datePublished": "2017-04-01T01:56:00.000Z",
-    "dateModified": "2017-04-04T21:19:05.000Z",
+    "dateModified": "2017-04-04T21:42:32.000Z",
     "description": "The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this.    An imperative approach: function isPrime(n) {     for(var j &#x3D; 2; j &amp;lt; n; j++) {     if(n % j &#x3D;&#x3D;&#x3D; 0) {       return false;     }   }   return true; } function sumPrimes(",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -841,7 +841,7 @@
             <header class="post-header">
                 <h1 class="post-title">Solving Sum of Primes</h1>
                 <section class="post-meta">
-                    <p class="author">by <a href="../../author/antyang.2">antony</a></p>
+                    <p class="author">by <a href="../../author/antyang.3">antony</a></p>
                     <time class="post-date" datetime="2017-03-31">2017-03-31</time>
                 </section>
             </header>
@@ -898,7 +898,7 @@ sumPrimes(100);
 sumPrimes(100);  
 </code></pre>
 
-<p>In this function we assign numbers to an empty array using <code>Array.apply(null, Array(#))</code>to avoid any "holes". <em>You can read about it in the <a href="../../initializing-a-new-array-with-values.2">previous</a> post.</em> Then we iterate through the new array and fill it with the <code>index + 1</code> resulting in <code>[1,2,3..10]</code> and slicing off the first index giving us <code>[2,3,4..10]</code>. Now we can filter though this list of numbers seeing if it passes the test and summing it up with <code>reduce</code>. <br>
+<p>In this function we assign numbers to an empty array using <code>Array.apply(null, Array(#))</code>to avoid any "holes". <em>You can read about it in the <a href="../../initializing-a-new-array-with-values.3">previous</a> post.</em> Then we iterate through the new array and fill it with the <code>index + 1</code> resulting in <code>[1,2,3..10]</code> and slicing off the first index giving us <code>[2,3,4..10]</code>. Now we can filter though this list of numbers seeing if it passes the test and summing it up with <code>reduce</code>. <br>
 This code is essentially the same thing but with the use of higher-order functions. We're still iterating through each number to check for primes. Let's try another approach.</p>
 
 <p><br></p>
