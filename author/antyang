@@ -6,8 +6,8 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="shortcut icon" href="../favicon.ico">
-  <link rel="stylesheet" type="text/css" href="../assets/css/default.css?v=e9cd64b806">
-  <link rel="stylesheet" type="text/css" href="../assets/css/prism.css?v=e9cd64b806">
+  <link rel="stylesheet" type="text/css" href="../assets/css/default.css?v=2aa80d6f9e">
+  <link rel="stylesheet" type="text/css" href="../assets/css/prism.css?v=2aa80d6f9e">
   <link rel="canonical" href="antyang" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="next" href="http://localhost:2368/author/antyang/page/2/" />
@@ -40,13 +40,21 @@
 </head>
 <body class="author-template author-antyang">
 <div class="indexBox" id="indexBox">
-
+  <div class="briefBox">
+  <a href="antyang">
+    <h3 class="blogTitle">random ramble</h3>
+    <h5 class="blogDescription">thoughts on javascript and random things</h5>
+  </a>
+</div>
   <div class="mobileOnly">
     <div class="navBox">
   <ul>
     <li class="navTitle" id="catalog">_</li>
     <li class="navItem">
       <a href="antyang" class="nav">about</a>
+    </li>
+    <li class="navItem">
+      <a href="mailto:hello@antonyyang.com?Subject=Hello%20Antony" class="nav">email</a>
     </li>
   </ul>
 </div>
@@ -126,8 +134,8 @@ var personalBooks = [
   },
 ]
 </script>
-<script type="text/javascript" src="../assets/js/prism.js?v=e9cd64b806"></script>
-<script type="text/javascript" src="../assets/js/default.js?v=e9cd64b806"></script>
+<script type="text/javascript" src="../assets/js/prism.js?v=2aa80d6f9e"></script>
+<script type="text/javascript" src="../assets/js/default.js?v=2aa80d6f9e"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </body>
 </html>
