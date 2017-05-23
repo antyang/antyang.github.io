@@ -6,8 +6,8 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="shortcut icon" href="../favicon.ico">
-  <link rel="stylesheet" type="text/css" href="../assets/css/default.css?v=1ce9eb799c">
-  <link rel="stylesheet" type="text/css" href="../assets/css/prism.css?v=1ce9eb799c">
+  <link rel="stylesheet" type="text/css" href="../assets/css/default.css?v=857004561f">
+  <link rel="stylesheet" type="text/css" href="../assets/css/prism.css?v=857004561f">
   <link rel="canonical" href="antyang" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="next" href="http://localhost:2368/author/antyang/page/2/" />
@@ -16,7 +16,7 @@
     <meta property="og:type" content="profile" />
     <meta property="og:title" content="antony - Page 1 - random ramble" />
     <meta property="og:url" content="http://localhost:2368/author/antyang/" />
-    <meta property="article:modified_time" content="2017-04-11T04:46:05.000Z" />
+    <meta property="article:modified_time" content="2017-05-23T19:03:58.000Z" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="antony - Page 1 - random ramble" />
     <meta name="twitter:url" content="http://localhost:2368/author/antyang/" />
@@ -88,7 +88,6 @@
 
 
 <canvas id="cas" class="cas"></canvas>
-<script type="text/javascript" src="https://pv.sohu.com/cityjson"></script>
 
 <script>  
 var personalInfo = {  
@@ -131,8 +130,9 @@ var personalBooks = [
   },
 ]
 </script>
-<script type="text/javascript" src="../assets/js/prism.js?v=1ce9eb799c"></script>
-<script type="text/javascript" src="../assets/js/default.js?v=1ce9eb799c"></script>
+<script type="text/javascript" src="../assets/js/prism.js?v=857004561f"></script>
+<script type="text/javascript" src="../assets/js/default.js?v=857004561f"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<script type="text/javascript" src="https://pv.sohu.com/cityjson"></script>
 </body>
 </html>
