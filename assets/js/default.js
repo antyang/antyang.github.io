@@ -10,7 +10,7 @@
     var liList = catalog.parentNode.children
     var toggleMenu = document.getElementsByClassName('toggleMenu')[0]
     var userAgentVal = navigator.userAgent
-    var ip = window.returnCitySN.cip
+    // var ip = window.returnCitySN.cip
     var toTop = document.getElementById('toTop')
 
     if (!!toggleMenu && window.innerWidth <= 960) {
