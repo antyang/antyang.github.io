@@ -1,4 +1,4 @@
-/* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+css+clike+javascript+bash+c+csharp+cpp+ruby+git+go+http+java+lua+markdown+nginx+objectivec+php+python+sql */
+/* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+css+clike+javascript+bash+go+python+swift */
 /**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
@@ -7,9 +7,11 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: #3b3c40;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	direction: ltr;
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Menlo, 'Courier New', Courier, monospace;
+  font-size: 13px;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -29,33 +31,33 @@ pre[class*="language-"] {
 
 /* Code blocks */
 pre[class*="language-"] {
-	padding: 1em 1em 1em 3em;
-	border-left: solid 3px #357ca0;
-	margin: 1em 0;
-	font-size: 0.85em;
+	padding: 1em;
+	margin: .5em 0;
 	overflow: auto;
+	border-radius: 0.3em;
 }
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: url("../image/preBG.png") repeat;
+	background: #272822;
 }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
 	padding: .1em;
 	border-radius: .3em;
+	white-space: normal;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: #708090;
+	color: slategray;
 }
 
 .token.punctuation {
-	color: #999999;
+	color: #f8f8f2;
 }
 
 .namespace {
@@ -67,12 +69,12 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-	color: #990055;
+	color: #f92672;
 }
 
 .token.boolean,
 .token.number {
-	color: #f92672;
+	color: #ae81ff;
 }
 
 .token.selector,
@@ -81,7 +83,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: #669900;
+	color: #a6e22e;
 }
 
 .token.operator,
@@ -90,23 +92,22 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-	color: #a67f59;
-	background: hsla(0, 0%, 100%, .5);
+	color: #f8f8f2;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.function {
-	color: #0077aa;
+	color: #e6db74;
 }
 
 .token.keyword {
-	color: #0077aa;
+	color: #66d9ef;
 }
 
 .token.regex,
 .token.important {
-	color: #ee9900;
+	color: #fd971f;
 }
 
 .token.important,
@@ -121,8 +122,3 @@ pre[class*="language-"] {
 	cursor: help;
 }
 
-@media (max-width: 640px) {
-	pre[class*="language-"] {
-	  padding: 1em;
-	}
-}

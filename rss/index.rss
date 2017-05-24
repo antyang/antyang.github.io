@@ -1,141 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>random ramble</title><description>thoughts on javascript and random things</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 23 May 2017 19:19:43 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Merge Two Sorted Arrays</title><description>&lt;p&gt;Given two sorted array of integers, return a merged single sorted array.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-js"&gt;Input: [1, 5, 10], [2, 3, 12, 15]  
-Output: [1, 2, 3, 5, 10, 12, 15]  
-Constraints: T O(n+m), S: O(n+m)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id="approach"&gt;approach&lt;/h2&gt;
-
-&lt;p&gt;The naive approach would be:  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-js"&gt;function mergeArrays(arrOne, arrTwo) {  
-    var mergeArr = arrOne.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/merge-two-sorted-arrays/</link><guid isPermaLink="false">ebe8a8f6-7548-4b63-8a3e-90d1d1e2e967</guid><dc:creator>antony</dc:creator><pubDate>Tue, 11 Apr 2017 19:24:48 GMT</pubDate><content:encoded>&lt;p&gt;Given two sorted array of integers, return a merged single sorted array.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-js"&gt;Input: [1, 5, 10], [2, 3, 12, 15]  
-Output: [1, 2, 3, 5, 10, 12, 15]  
-Constraints: T O(n+m), S: O(n+m)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id="approach"&gt;approach&lt;/h2&gt;
-
-&lt;p&gt;The naive approach would be:  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-js"&gt;function mergeArrays(arrOne, arrTwo) {  
-    var mergeArr = arrOne.concat(arrTwo);
-    return mergeArr.sort(function(a, b) {
-        return a - b;
-    })
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Concating the given two arrays then sorting would cost us &lt;code&gt;O(nlogn)&lt;/code&gt; time. &lt;br&gt;
-&lt;br&gt; &lt;br&gt;
-Let’s see if we can do better. &lt;br&gt;
-&lt;br&gt; &lt;br&gt;
-We know the two arrays are sorted. So starting at the 0th element of each array and compare, whichever is less than, add it to the resulting array:  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-js"&gt;[1, 5, 10] // arrOne
-[2, 3, 12, 15] // arrTwo
-// comparing 1 &amp;amp; 2
-
-[x, 5, 10] // arrOne
-[2, 3, 12, 15] // arrTwo
-
-[1, x, x, x, x, x, x] // result
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After the comparison increment the index respectively to the array, and continue to the next index:  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-js"&gt;[x, 5, 10] // arrOne
-[2, 3, 12, 15] // arrTwo
-
-// an element has been pushed from arrOne, so increment the index
-// comparing 2 &amp;amp; 5
-
-[x, 5, 10] // arrOne
-[x, 3, 12, 15] // arrTwo
-
-[1, 2, x, x, x, x, x] // result
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;By following this pattern, we’ll be able to get the solution. &lt;br&gt;
-&lt;br&gt; &lt;br&gt;
-Wait! Let’s think about edge cases. &lt;br&gt;
-1. One of our arrays runs out of elements before merging. &lt;br&gt;
-2. One or both of is 0 elements or 1 element. &lt;br&gt;
-3. One of our input arrays is longer than the other.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;The first edge case will most likely happen all the time. To fix that, the array with values left will be concatenated to the resulting array.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id="gist"&gt;gist&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Create new array to store merged elements.&lt;/li&gt;
-&lt;li&gt;Instantiate two pointers i &amp;amp; j and set to 0, indicating the current index.&lt;/li&gt;
-&lt;li&gt;While the combined index is less than the length of the two arrays.&lt;/li&gt;
-&lt;li&gt;Compare the two arrays at their respective index.&lt;/li&gt;
-&lt;li&gt;Push the smaller element into the resulting array, and increment the index respectively.&lt;/li&gt;
-&lt;li&gt;Once one of the array is depleted, it will push the remaining value of the other array into results.&lt;/li&gt;
-&lt;li&gt;Resulting in a sorted array running in linear time.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class="language-js"&gt;function merge(left, right){  
-  var result = [];
-  var il = 0,
-  var ir = 0;
-
-  while (il &amp;lt; left.length &amp;amp;&amp;amp; ir &amp;lt; right.length){
-    if (left[il] &amp;lt; right[ir]){
-      result.push(left[il++]);
-    } else {
-      result.push(right[ir++]);
-    }
-  }
-  return result.concat(left.slice(il)).concat(right.slice(ir));
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;br&gt; &lt;br&gt;
-Another way to approach this:&lt;/p&gt;
-
-&lt;p&gt;Instead of pushing, keep track of the index of result array and at each index, the smaller value will be assigned to the appropriate result index.  &lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-js"&gt;function mergeArrays(arrOne, arrTwo) {  
-    var result = [];
-    var i = 0;
-    var j = 0;
-    var resultIndex = 0;
-
-    while (resultIndex &amp;lt; (arrOne.length + arrTwo.length)) {
-        var arrOneExhausted = i &amp;gt;= arrOne.length;
-        var arrTwoExhausted = j &amp;gt;= arrTwo.length;
-
-        if(!arrOneExhausted &amp;amp;&amp;amp; (arrTwoExhausted || arrOne[i] &amp;lt; arrTwo[j])) {
-            result[resultIndex] = arrOne[i];
-            i++;
-        } else {
-            result[resultIndex] = arrTwo[j];
-            j++;
-        }
-        resultIndex++
-    }
-    return result;
-}
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Solving Sum of Primes</title><description>&lt;p&gt;The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this. &lt;br&gt;
-&lt;br&gt; &lt;br&gt;
-&lt;strong&gt;An imperative approach:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class="language-js"&gt;function isPrime(n) {  
-  for(var j = 2; j &amp;lt; n; j++) {
-    if(n % j === 0) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function sumPrimes(&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/solving-sum-of-primes/</link><guid isPermaLink="false">7944b330-389a-427f-bce9-a61966defa04</guid><dc:creator>antony</dc:creator><pubDate>Sat, 01 Apr 2017 01:56:00 GMT</pubDate><content:encoded>&lt;p&gt;The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this. &lt;br&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Antony Yang Blog</title><description>thoughts on code and random things</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Wed, 24 May 2017 08:10:23 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Solving Sum of Primes</title><description>Using Sieve of Eratosthenes and other methods to find the sum of all primes.</description><link>http://localhost:2368/solving-sum-of-primes/</link><guid isPermaLink="false">7944b330-389a-427f-bce9-a61966defa04</guid><dc:creator>antony</dc:creator><pubDate>Tue, 11 Apr 2017 19:25:00 GMT</pubDate><content:encoded>&lt;p&gt;The basic idea is to find all prime numbers from 2 to Nth number and sum them together. There’s a few ways to approach this. &lt;br&gt;
 &lt;br&gt; &lt;br&gt;
 &lt;strong&gt;An imperative approach:&lt;/strong&gt;&lt;/p&gt;
 
@@ -230,6 +93,135 @@ This code is essentially the same thing but with the use of higher-order functio
 }
 
 sieveOfEratSum(10);  
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Merge Two Sorted Arrays</title><description>&lt;p&gt;Given two sorted array of integers, return a merged single sorted array.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Input: [1, 5, 10], [2, 3, 12, 15]  
+Output: [1, 2, 3, 5, 10, 12, 15]  
+Constraints: T O(n+m), S: O(n+m)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="approach"&gt;approach&lt;/h2&gt;
+
+&lt;p&gt;The naive approach would be:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;function mergeArrays(arrOne, arrTwo) {  
+    var mergeArr = arrOne.&lt;/code&gt;&lt;/pre&gt;</description><link>http://localhost:2368/merge-two-sorted-arrays/</link><guid isPermaLink="false">ebe8a8f6-7548-4b63-8a3e-90d1d1e2e967</guid><dc:creator>antony</dc:creator><pubDate>Tue, 11 Apr 2017 19:24:00 GMT</pubDate><content:encoded>&lt;p&gt;Given two sorted array of integers, return a merged single sorted array.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Input: [1, 5, 10], [2, 3, 12, 15]  
+Output: [1, 2, 3, 5, 10, 12, 15]  
+Constraints: T O(n+m), S: O(n+m)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="approach"&gt;approach&lt;/h2&gt;
+
+&lt;p&gt;The naive approach would be:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;function mergeArrays(arrOne, arrTwo) {  
+    var mergeArr = arrOne.concat(arrTwo);
+    return mergeArr.sort(function(a, b) {
+        return a - b;
+    })
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Concating the given two arrays then sorting would cost us &lt;code&gt;O(nlogn)&lt;/code&gt; time.&lt;/p&gt;
+
+&lt;p&gt;Let’s see if we can do better.&lt;/p&gt;
+
+&lt;p&gt;We know the two arrays are sorted. So starting at the 0th element of each array and compare, whichever is less than, add it to the resulting array:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;[1, 5, 10] // arrOne
+[2, 3, 12, 15] // arrTwo
+// comparing 1 &amp;amp; 2
+
+[x, 5, 10] // arrOne
+[2, 3, 12, 15] // arrTwo
+
+[1, x, x, x, x, x, x] // result
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After the comparison increment the index respectively to the array, and continue to the next index:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;[x, 5, 10] // arrOne
+[2, 3, 12, 15] // arrTwo
+
+// an element has been pushed from arrOne, so increment the index
+// comparing 2 &amp;amp; 5
+
+[x, 5, 10] // arrOne
+[x, 3, 12, 15] // arrTwo
+
+[1, 2, x, x, x, x, x] // result
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;By following this pattern, we’ll be able to get the solution.&lt;/p&gt;
+
+&lt;p&gt;Wait! Let’s think about edge cases.  &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+  &lt;li&gt;One of our arrays runs out of elements before merging.&lt;/li&gt;
+  &lt;li&gt;One or both of is 0 elements or 1 element.&lt;/li&gt;
+  &lt;li&gt;One of our input arrays is longer than the other.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;The first edge case will most likely happen all the time. To fix that, the array with values left will be concatenated to the resulting array.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id="gist"&gt;gist&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create new array to store merged elements.&lt;/li&gt;
+&lt;li&gt;Instantiate two pointers i &amp;amp; j and set to 0, indicating the current index.&lt;/li&gt;
+&lt;li&gt;While the combined index is less than the length of the two arrays.&lt;/li&gt;
+&lt;li&gt;Compare the two arrays at their respective index.&lt;/li&gt;
+&lt;li&gt;Push the smaller element into the resulting array, and increment the index respectively.&lt;/li&gt;
+&lt;li&gt;Once one of the array is depleted, it will push the remaining value of the other array into results.&lt;/li&gt;
+&lt;li&gt;Resulting in a sorted array running in linear time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;function merge(left, right){  
+  var result = [];
+  var il = 0,
+  var ir = 0;
+
+  while (il &amp;lt; left.length &amp;amp;&amp;amp; ir &amp;lt; right.length){
+    if (left[il] &amp;lt; right[ir]){
+      result.push(left[il++]);
+    } else {
+      result.push(right[ir++]);
+    }
+  }
+  return result.concat(left.slice(il)).concat(right.slice(ir));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br&gt; &lt;br&gt;
+Another way to approach this:&lt;/p&gt;
+
+&lt;p&gt;Instead of pushing, keep track of the index of result array and at each index, the smaller value will be assigned to the appropriate result index.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-js"&gt;function mergeArrays(arrOne, arrTwo) {  
+    var result = [];
+    var i = 0;
+    var j = 0;
+    var resultIndex = 0;
+
+    while (resultIndex &amp;lt; (arrOne.length + arrTwo.length)) {
+        var arrOneExhausted = i &amp;gt;= arrOne.length;
+        var arrTwoExhausted = j &amp;gt;= arrTwo.length;
+
+        if(!arrOneExhausted &amp;amp;&amp;amp; (arrTwoExhausted || arrOne[i] &amp;lt; arrTwo[j])) {
+            result[resultIndex] = arrOne[i];
+            i++;
+        } else {
+            result[resultIndex] = arrTwo[j];
+            j++;
+        }
+        resultIndex++
+    }
+    return result;
+}
 &lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title>Initializing a new Array with values</title><description>&lt;p&gt;&lt;em&gt;This is one of many ways to initialize a new array, specifically using  &lt;code&gt;new Array(n)&lt;/code&gt;.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Say we want to initialize a new Array with a short length of 3.&lt;/strong&gt;&lt;/p&gt;
